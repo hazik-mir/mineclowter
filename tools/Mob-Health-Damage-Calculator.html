@@ -15,4 +15,4 @@ const W={Fist:1,'Wood Sword':4,'Stone Sword':5,'Iron Sword':6,'Diamond Sword':7,
 $('#m').innerHTML=Object.keys(M).map(k=>'<option>'+k).join('');$('#w').innerHTML=Object.keys(W).map(k=>'<option>'+k).join('');
 function c(){let d=W[$('#w').value]+(v('s')>0?.5*v('s')+.5:0);if($('#c').checked)d*=1.5;const h=M[$('#m').value];
 out('o',`Mob health: ${h} (${h/2} hearts)<br>Damage per hit: <b>${d}</b><br>Hits to kill: <b>${Math.ceil(h/d)}</b><br><small>Ignores armor and attack cooldown</small>`)}
-$$('input,select').forEach(e=>e.oninput=c);c();</script></body></html>
+$$('input,select').forEach(e=>e.oninput=c);c();</script><script src="../assets/ads.js"></script></body></html>

@@ -19,4 +19,4 @@ const gv=$('#g').value.split('.').map(Number),me=h.min_engine_version;
 if(Array.isArray(me)){let ok2=true;for(let i=0;i<3;i++){if((me[i]||0)<(gv[i]||0))break;if((me[i]||0)>(gv[i]||0)){ok2=false;break}}ok(ok2,`min_engine_version ${me.join('.')} ${ok2?'works on':'is newer than'} ${$('#g').value}`)}else ok(0,'min_engine_version missing');
 const M=j.modules||[];ok(M.length>0,'Has modules');M.forEach(m=>{ok(['data','resources','script','client_data','interface','world_template'].includes(m.type),'Module type: '+m.type);ok(U.test(m.uuid||''),'Module UUID valid');ok(m.uuid!==h.uuid,'Module UUID differs from header')});
 if(M.some(m=>m.type=='script'))ok((j.dependencies||[]).some(d=>d.module_name),'Script module needs @minecraft/server dependency');
-out('o',L.join('<br>'))}c();</script></body></html>
+out('o',L.join('<br>'))}c();</script><script src="../assets/ads.js"></script></body></html>

@@ -14,4 +14,4 @@ const E=[['Mending',1,2],['Unbreaking',3,1],['Efficiency',5,1],['Fortune',3,2],[
 $('#l').innerHTML=E.map((e,i)=>`<label>${e[0]} (0-${e[1]}, x${e[2]})</label><input type="number" id="e${i}" min="0" max="${e[1]}" value="0">`).join('');
 function c(){let s=0;E.forEach((e,i)=>s+=Math.min(e[1],v('e'+i))*e[2]);const t=s+(2**v('a')-1)+(2**v('b')-1);
 out('o',`Base enchant cost: ${s}<br>Total: <b>${t} levels</b> ${t>=40?'- <span style="color:#f55">Too Expensive!</span>':''}`)}
-$$('input').forEach(e=>e.oninput=c);c();</script></body></html>
+$$('input').forEach(e=>e.oninput=c);c();</script><script src="../assets/ads.js"></script></body></html>

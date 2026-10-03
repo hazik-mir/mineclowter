@@ -17,4 +17,4 @@ function u(){const parts=$('#t').value.split(/[&§]([0-9a-fk-or])/);let col='#ff
 for(let i=0;i<parts.length;i++){if(i%2==0){h+=`<span style="color:${col};${st.includes('l')?'font-weight:bold;':''}${st.includes('o')?'font-style:italic;':''}text-decoration:${(st.includes('n')?'underline ':'')+(st.includes('m')?'line-through':'')};${st.includes('k')?'filter:blur(1px)':''}">${parts[i].replace(/</g,'&lt;')}</span>`}
 else{const c=parts[i];if(c=='r'){col='#fff';st=[]}else if(/[0-9a-f]/.test(c)){col=CL.find(x=>x[0]==c)[1];st=[]}else st.push(c)}}
 $('#p').innerHTML=h;$('#p').style.cssText='background:#222;padding:12px;border:3px solid #000;font-size:16px';$('#o').textContent=$('#t').value.replace(/&([0-9a-fk-or])/g,'§$1')}
-$('#t').oninput=u;u();</script></body></html>
+$('#t').oninput=u;u();</script><script src="../assets/ads.js"></script></body></html>

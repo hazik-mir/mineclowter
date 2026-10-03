@@ -15,4 +15,4 @@ const G={give:a=>`/give ${a[0]} minecraft:${a[1]} ${a[2]}`,summon:a=>`/summon mi
 $('#c').innerHTML=Object.keys(C).map(k=>'<option>'+k).join('');
 function b(){$('#f').innerHTML=C[$('#c').value].map((f,i)=>`<label>${f[0]}</label><input id="f${i}" value="${f[1].replace(/"/g,'&quot;')}">`).join('');$$('#f input').forEach(e=>e.oninput=u);u()}
 function u(){$('#o').textContent=G[$('#c').value](C[$('#c').value].map((_,i)=>$('#f'+i).value))}
-$('#c').onchange=b;b();</script></body></html>
+$('#c').onchange=b;b();</script><script src="../assets/ads.js"></script></body></html>

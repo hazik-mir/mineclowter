@@ -11,4 +11,4 @@
 <main class="wrap"><h1 class="title"><img id="ic" width="48" height="48"><span id="tt"></span></h1><section class="card"><h3>Overworld &rarr; Nether</h3><div class="row"><div><label>X</label><input id="ox" type="number" value="800"></div><div><label>Z</label><input id="oz" type="number" value="-1600"></div></div><div class="res" id="o1"></div><h3 style="margin-top:20px">Nether &rarr; Overworld</h3><div class="row"><div><label>X</label><input id="nx" type="number" value="100"></div><div><label>Z</label><input id="nz" type="number" value="-200"></div></div><div class="res" id="o2"></div></section></main>
 <script src="../assets/common.js"></script><script>
 function c(){out('o1',`Nether: <b>${Math.floor(v('ox')/8)}, ${Math.floor(v('oz')/8)}</b>`);out('o2',`Overworld: <b>${v('nx')*8}, ${v('nz')*8}</b>`)}
-$$('input').forEach(e=>e.oninput=c);c();</script></body></html>
+$$('input').forEach(e=>e.oninput=c);c();</script><script src="../assets/ads.js"></script></body></html>

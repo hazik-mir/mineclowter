@@ -13,4 +13,4 @@
 const P=[['Swiftness','Sugar',180,480,90],['Strength','Blaze Powder',180,480,90],['Healing (2 / 4 hearts)','Glistering Melon',0,0,0],['Fire Resistance','Magma Cream',180,480,0],['Night Vision','Golden Carrot',180,480,0],['Water Breathing','Pufferfish',180,480,0],['Regeneration','Ghast Tear',45,90,22],['Poison','Spider Eye',45,90,21],['Invisibility','Night Vision + Fermented Spider Eye',180,480,0],['Slow Falling','Phantom Membrane',90,240,0],['Leaping','Rabbit\'s Foot',180,480,90],['Weakness','Fermented Spider Eye (water bottle)',90,240,0],['Slowness','Swiftness + Fermented Spider Eye',90,240,20],['Turtle Master','Turtle Shell',20,40,20]];
 const f=(s,m)=>s?(Math.floor(s*m/60)+':'+String(Math.round(s*m%60)).padStart(2,'0')):'-';
 function c(){const m=+$('#m').value,q=$('#q').value.toLowerCase();$('#t').innerHTML=P.filter(p=>p[0].toLowerCase().includes(q)).map(p=>`<tr><td>${p[0]}<td>${p[1]}<td>${p[2]?f(p[2],m):'Instant'}<td>${f(p[3],m)}<td>${p[2]?f(p[4],m):'Glowstone'}`).join('')}
-$$('input,select').forEach(e=>e.oninput=c);c();</script></body></html>
+$$('input,select').forEach(e=>e.oninput=c);c();</script><script src="../assets/ads.js"></script></body></html>

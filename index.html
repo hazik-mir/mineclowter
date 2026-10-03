@@ -14,4 +14,4 @@
 // To add a tool: drop NAME.html in /tools, optionally icons/name.png, then add "NAME" to this list.
 const TOOLS=['FPS-Performance-Guide', 'Sensitivity-Converter', 'FOV-Calculator', 'Coordinate-Tools', 'Enchantment-Calculator', 'Nether-Overworld-Converter', 'Block-Item-ID-Lookup', 'Potion-Calculator', 'XP-Calculator', 'Mob-Health-Damage-Calculator', 'Seed-Tools', 'Command-Generator', 'Color-Code-Text-Formatter', 'Resource-Pack-Information', 'Addon-Compatibility-Checker', 'Device-Performance-Database', 'PvP-Settings-Guides'];
 function draw(){const q=$('#q').value.toLowerCase();$('#g').innerHTML=TOOLS.filter(t=>toolName(t).toLowerCase().includes(q)).map((t,i)=>`<a class="tool" style="animation-delay:${i*50}ms" href="tools/${t}.html"><img src="icons/${t.toLowerCase()}.png" onerror="this.onerror=null;this.src='icons/main.png'" width="64" height="64"><span>${toolName(t)}</span></a>`).join('')}
-draw();</script></body></html>
+draw();</script><script src="assets/ads.js"></script></body></html>

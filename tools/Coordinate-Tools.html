@@ -14,4 +14,4 @@
 const f=Math.floor;
 function c(){const x=v('x'),z=v('z');out('o',`Chunk: <b>${f(x/16)}, ${f(z/16)}</b><br>Inside chunk: ${x&15}, ${v('y')}, ${z&15}<br>Chunk blocks: ${f(x/16)*16}..${f(x/16)*16+15}, ${f(z/16)*16}..${f(z/16)*16+15}<br>Region file: r.${f(x/512)}.${f(z/512)}.mca`);
 const dx=x-v('x2'),dz=z-v('z2');out('o2',`Straight: <b>${Math.hypot(dx,dz).toFixed(1)}</b> blocks<br>Manhattan: ${Math.abs(dx)+Math.abs(dz)}<br>Nether equivalent: ${(Math.hypot(dx,dz)/8).toFixed(1)}`)}
-$$('input').forEach(e=>e.oninput=c);c();</script></body></html>
+$$('input').forEach(e=>e.oninput=c);c();</script><script src="../assets/ads.js"></script></body></html>

@@ -33,4 +33,4 @@ function rs(){$('#s').value=Math.floor(Math.random()*2**31)*(Math.random()<.5?-1
 function mv(a,b){$('#cx').value=v('cx')+a*128*$('#z').value;$('#cz').value=v('cz')+b*128*$('#z').value;draw()}
 cv.onmousemove=e=>{const r=cv.getBoundingClientRect(),z=+$('#z').value,x=Math.round(v('cx')+((e.clientX-r.left)/r.width*256-128)*z),y=Math.round(v('cz')+((e.clientY-r.top)/r.height*256-128)*z);
 out('o',`X ${x}, Z ${y} - chunk ${Math.floor(x/16)}, ${Math.floor(y/16)} - slime chunk: ${slime(Math.floor(x/16),Math.floor(y/16))?'<b>YES</b>':'no'}`)};
-$$('input,select').forEach(e=>e.onchange=draw);draw();</script></body></html>
+$$('input,select').forEach(e=>e.onchange=draw);draw();</script><script src="../assets/ads.js"></script></body></html>

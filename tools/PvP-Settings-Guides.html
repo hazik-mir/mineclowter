@@ -15,4 +15,4 @@ const G={'Java 1.8':['FOV 70-90, sensitivity 30-60% (find your cm/360)','Render 
 'Bedrock':['Touch: enable Split Controls + Joystick, lower sensitivity','Controller: aim assist helps, tune deadzone to 0.1-0.15','Turn on Fancy Graphics off, render 6-10 for stable FPS','Use Java-style Hit Particles packs only if allowed','Keep 60+ FPS stable for consistent hit registration']};
 $('#tb').innerHTML=Object.keys(G).map(k=>`<button onclick="s('${k}')" id="b_${k.replace(/\W/g,'')}">${k}</button>`).join('');
 function s(k){$$('.tabs button').forEach(b=>b.classList.remove('on'));$('#b_'+k.replace(/\W/g,'')).classList.add('on');$('#o').innerHTML=G[k].map(x=>'<li>'+x+'</li>').join('')}
-s('Java 1.8');</script></body></html>
+s('Java 1.8');</script><script src="../assets/ads.js"></script></body></html>

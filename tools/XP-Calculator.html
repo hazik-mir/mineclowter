@@ -13,4 +13,4 @@
 const tot=L=>L<=16?L*L+6*L:L<=31?2.5*L*L-40.5*L+360:4.5*L*L-162.5*L+2220;
 const per=L=>L<=15?2*L+7:L<=30?5*L-38:9*L-158;
 function c(){const a=v('a'),b=v('b');out('o',`XP points needed: <b>${Math.round(tot(b)-tot(a))}</b><br>Total XP at level ${a}: ${Math.round(tot(a))}<br>Total XP at level ${b}: ${Math.round(tot(b))}<br>XP to go ${b}&rarr;${b+1}: ${per(b)}<br>Bottles o' Enchanting (avg 7 XP): ~${Math.ceil(Math.max(0,tot(b)-tot(a))/7)}`)}
-$$('input').forEach(e=>e.oninput=c);c();</script></body></html>
+$$('input').forEach(e=>e.oninput=c);c();</script><script src="../assets/ads.js"></script></body></html>
