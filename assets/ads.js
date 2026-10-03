@@ -1,6 +1,10 @@
 
 (function(){
-if(!$('#tt'))return;                                  // tool pages only
+if(!$('#tt'))return;
+if(/[?&]debug/.test(location.search)){const d=document.createElement('pre');d.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#000;color:#0f0;padding:8px;font-size:10px;margin:0;max-height:40vh;overflow:auto';document.body.appendChild(d);const L=m=>d.textContent+=m+'\n';
+L('protocol: '+location.protocol+(location.protocol=='file:'?'  <-- ads and icons need http(s). Host the site or run: python -m http.server':''));
+['https://abscloud.org/1/2bbd078b21a80da9f44bcc6cf2a09b26','https://bauval.org/14/23d90973ee23bdd31805e436e25b21a0','https://bauval.org/21/f620aec560d902e4385e5cbbe72efa81'].forEach(u=>fetch(u,{mode:'no-cors'}).then(()=>L('reachable: '+u),()=>L('BLOCKED/unreachable: '+u)));
+setTimeout(()=>{const im=$('#ic');L('icon file used: '+(im&&im.currentSrc));L('ad container children: '+$('#container-f620aec560d902e4385e5cbbe72efa81').children.length)},2500)}                                  // tool pages only
 const LIMIT=6, WINDOW=60*60*1000, WAIT=3000, AD='https://bauval.org/21/f620aec560d902e4385e5cbbe72efa81';
 const st=document.createElement('style');
 st.textContent='.locked>*:not(.adn):not(.ph){display:none!important}.adn{text-align:center;padding:10px}.adn p{margin:6px 0 14px}#abx{position:fixed;inset:0;z-index:9999;background:#000e;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center}#abx .card{max-width:460px}';

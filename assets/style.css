@@ -54,3 +54,6 @@ details{margin:8px 0;color:#222}summary{cursor:pointer;padding:8px;background:#a
 .ft{position:relative;z-index:1;text-align:center;padding:24px 14px;background:#000a;border-top:4px solid #000;color:#bbb;font-size:9px}
 .ft a{color:#8ed05d}.rel{display:flex;gap:10px;flex-wrap:wrap}
 .card p{color:#222}.hero p{margin:6px 0}
+
+.slot{position:relative}.slot .em{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;line-height:1;pointer-events:none}
+.adp{min-height:110px}#container-f620aec560d902e4385e5cbbe72efa81:empty::before{content:'Loading ad...';color:#555}
