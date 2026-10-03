@@ -1,0 +1,16 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Potion Calculator - Mineclowter</title>
+<meta name="description" content="Minecraft potion calculator: ingredients and durations for drinkable, splash and lingering potions, with redstone and level II times.">
+<link rel="canonical" href="https://yourdomain.com/tools/Potion-Calculator.html">
+<meta name="theme-color" content="#5da13a"><meta name="robots" content="index,follow"><meta name="author" content="Hazik">
+<meta property="og:site_name" content="Mineclowter"><meta property="og:type" content="website"><meta property="og:title" content="Potion Calculator - Mineclowter"><meta property="og:description" content="Minecraft potion calculator: ingredients and durations for drinkable, splash and lingering potions, with redstone and level II times."><meta property="og:url" content="https://yourdomain.com/tools/Potion-Calculator.html"><meta property="og:image" content="https://yourdomain.com/icons/main.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Potion Calculator - Mineclowter"><meta name="twitter:description" content="Minecraft potion calculator: ingredients and durations for drinkable, splash and lingering potions, with redstone and level II times.">
+<link rel="icon" href="../icons/main.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"></head><body>
+<header class="top"><a class="btn" href="../index.html">&#9668; Back</a><span class="by">Mineclowter<small>by Hazik</small></span></header>
+<main class="wrap"><h1 class="title"><img id="ic" width="48" height="48"><span id="tt"></span></h1><section class="card"><div class="row"><div><label>Type</label><select id="m"><option value="1">Drinkable<option value="1">Splash<option value="0.25">Lingering</select></div><div><label>Search</label><input id="q"></div></div><table style="margin-top:14px"><thead><tr><th>Potion<th>Ingredient<th>Base<th>+Redstone<th>Level II</thead><tbody id="t"></tbody></table><p>Lingering = 1/4 duration. Brew on Awkward Potion (Nether Wart) unless noted.</p></section></main>
+<script src="../assets/common.js"></script><script>
+const P=[['Swiftness','Sugar',180,480,90],['Strength','Blaze Powder',180,480,90],['Healing (2 / 4 hearts)','Glistering Melon',0,0,0],['Fire Resistance','Magma Cream',180,480,0],['Night Vision','Golden Carrot',180,480,0],['Water Breathing','Pufferfish',180,480,0],['Regeneration','Ghast Tear',45,90,22],['Poison','Spider Eye',45,90,21],['Invisibility','Night Vision + Fermented Spider Eye',180,480,0],['Slow Falling','Phantom Membrane',90,240,0],['Leaping','Rabbit\'s Foot',180,480,90],['Weakness','Fermented Spider Eye (water bottle)',90,240,0],['Slowness','Swiftness + Fermented Spider Eye',90,240,20],['Turtle Master','Turtle Shell',20,40,20]];
+const f=(s,m)=>s?(Math.floor(s*m/60)+':'+String(Math.round(s*m%60)).padStart(2,'0')):'-';
+function c(){const m=+$('#m').value,q=$('#q').value.toLowerCase();$('#t').innerHTML=P.filter(p=>p[0].toLowerCase().includes(q)).map(p=>`<tr><td>${p[0]}<td>${p[1]}<td>${p[2]?f(p[2],m):'Instant'}<td>${f(p[3],m)}<td>${p[2]?f(p[4],m):'Glowstone'}`).join('')}
+$$('input,select').forEach(e=>e.oninput=c);c();</script></body></html>

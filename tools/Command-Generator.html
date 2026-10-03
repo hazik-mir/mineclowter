@@ -1,0 +1,18 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Command Generator - Mineclowter</title>
+<meta name="description" content="Free Minecraft command generator for give, summon, effect, tp, fill, gamemode and enchant. Copy ready-to-use commands.">
+<link rel="canonical" href="https://yourdomain.com/tools/Command-Generator.html">
+<meta name="theme-color" content="#5da13a"><meta name="robots" content="index,follow"><meta name="author" content="Hazik">
+<meta property="og:site_name" content="Mineclowter"><meta property="og:type" content="website"><meta property="og:title" content="Command Generator - Mineclowter"><meta property="og:description" content="Free Minecraft command generator for give, summon, effect, tp, fill, gamemode and enchant. Copy ready-to-use commands."><meta property="og:url" content="https://yourdomain.com/tools/Command-Generator.html"><meta property="og:image" content="https://yourdomain.com/icons/main.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Command Generator - Mineclowter"><meta name="twitter:description" content="Free Minecraft command generator for give, summon, effect, tp, fill, gamemode and enchant. Copy ready-to-use commands.">
+<link rel="icon" href="../icons/main.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"></head><body>
+<header class="top"><a class="btn" href="../index.html">&#9668; Back</a><span class="by">Mineclowter<small>by Hazik</small></span></header>
+<main class="wrap"><h1 class="title"><img id="ic" width="48" height="48"><span id="tt"></span></h1><section class="card"><label>Command</label><select id="c"></select><div id="f"></div><div class="res" id="o"></div><button onclick="copy($('#o').textContent)">Copy</button></section></main>
+<script src="../assets/common.js"></script><script>
+const C={give:[['Target','@p'],['Item','diamond_sword'],['Count','1']],summon:[['Entity','zombie'],['Position','~ ~ ~'],['NBT (optional)','{CustomName:\'"Boss"\'}']],effect:[['Target','@p'],['Effect','speed'],['Seconds','60'],['Level','1']],tp:[['Target','@p'],['Destination','0 100 0']],fill:[['From','~ ~ ~'],['To','~10 ~5 ~10'],['Block','stone'],['Mode','replace']],gamemode:[['Mode','creative'],['Target','@p']],enchant:[['Target','@p'],['Enchantment','sharpness'],['Level','5']]};
+const G={give:a=>`/give ${a[0]} minecraft:${a[1]} ${a[2]}`,summon:a=>`/summon minecraft:${a[0]} ${a[1]} ${a[2]}`.trim(),effect:a=>`/effect give ${a[0]} minecraft:${a[1]} ${a[2]} ${a[3]}`,tp:a=>`/tp ${a[0]} ${a[1]}`,fill:a=>`/fill ${a[0]} ${a[1]} minecraft:${a[2]} ${a[3]}`,gamemode:a=>`/gamemode ${a[0]} ${a[1]}`,enchant:a=>`/enchant ${a[0]} minecraft:${a[1]} ${a[2]}`};
+$('#c').innerHTML=Object.keys(C).map(k=>'<option>'+k).join('');
+function b(){$('#f').innerHTML=C[$('#c').value].map((f,i)=>`<label>${f[0]}</label><input id="f${i}" value="${f[1].replace(/"/g,'&quot;')}">`).join('');$$('#f input').forEach(e=>e.oninput=u);u()}
+function u(){$('#o').textContent=G[$('#c').value](C[$('#c').value].map((_,i)=>$('#f'+i).value))}
+$('#c').onchange=b;b();</script></body></html>

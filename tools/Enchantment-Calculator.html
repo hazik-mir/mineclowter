@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Enchantment Calculator - Mineclowter</title>
+<meta name="description" content="Minecraft anvil and enchantment cost calculator with prior work penalty. See when an item becomes Too Expensive.">
+<link rel="canonical" href="https://yourdomain.com/tools/Enchantment-Calculator.html">
+<meta name="theme-color" content="#5da13a"><meta name="robots" content="index,follow"><meta name="author" content="Hazik">
+<meta property="og:site_name" content="Mineclowter"><meta property="og:type" content="website"><meta property="og:title" content="Enchantment Calculator - Mineclowter"><meta property="og:description" content="Minecraft anvil and enchantment cost calculator with prior work penalty. See when an item becomes Too Expensive."><meta property="og:url" content="https://yourdomain.com/tools/Enchantment-Calculator.html"><meta property="og:image" content="https://yourdomain.com/icons/main.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Enchantment Calculator - Mineclowter"><meta name="twitter:description" content="Minecraft anvil and enchantment cost calculator with prior work penalty. See when an item becomes Too Expensive.">
+<link rel="icon" href="../icons/main.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"></head><body>
+<header class="top"><a class="btn" href="../index.html">&#9668; Back</a><span class="by">Mineclowter<small>by Hazik</small></span></header>
+<main class="wrap"><h1 class="title"><img id="ic" width="48" height="48"><span id="tt"></span></h1><section class="card"><p>Anvil cost for combining an item with an enchanted book (Java).</p><div class="row"><div><label>Item prior-work uses</label><input id="a" type="number" value="0" min="0"></div><div><label>Book prior-work uses</label><input id="b" type="number" value="0" min="0"></div></div><div id="l"></div><div class="res" id="o"></div></section></main>
+<script src="../assets/common.js"></script><script>
+const E=[['Mending',1,2],['Unbreaking',3,1],['Efficiency',5,1],['Fortune',3,2],['Silk Touch',1,4],['Sharpness',5,1],['Looting',3,2],['Protection',4,1],['Thorns',3,4],['Sweeping Edge',3,2],['Power',5,1],['Infinity',1,4]];
+$('#l').innerHTML=E.map((e,i)=>`<label>${e[0]} (0-${e[1]}, x${e[2]})</label><input type="number" id="e${i}" min="0" max="${e[1]}" value="0">`).join('');
+function c(){let s=0;E.forEach((e,i)=>s+=Math.min(e[1],v('e'+i))*e[2]);const t=s+(2**v('a')-1)+(2**v('b')-1);
+out('o',`Base enchant cost: ${s}<br>Total: <b>${t} levels</b> ${t>=40?'- <span style="color:#f55">Too Expensive!</span>':''}`)}
+$$('input').forEach(e=>e.oninput=c);c();</script></body></html>

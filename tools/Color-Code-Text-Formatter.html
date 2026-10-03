@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Color Code Text Formatter - Mineclowter</title>
+<meta name="description" content="Minecraft color code and text formatter with live preview. Build text with section sign codes for bold, italic, underline and colors.">
+<link rel="canonical" href="https://yourdomain.com/tools/Color-Code-Text-Formatter.html">
+<meta name="theme-color" content="#5da13a"><meta name="robots" content="index,follow"><meta name="author" content="Hazik">
+<meta property="og:site_name" content="Mineclowter"><meta property="og:type" content="website"><meta property="og:title" content="Color Code Text Formatter - Mineclowter"><meta property="og:description" content="Minecraft color code and text formatter with live preview. Build text with section sign codes for bold, italic, underline and colors."><meta property="og:url" content="https://yourdomain.com/tools/Color-Code-Text-Formatter.html"><meta property="og:image" content="https://yourdomain.com/icons/main.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Color Code Text Formatter - Mineclowter"><meta name="twitter:description" content="Minecraft color code and text formatter with live preview. Build text with section sign codes for bold, italic, underline and colors.">
+<link rel="icon" href="../icons/main.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"></head><body>
+<header class="top"><a class="btn" href="../index.html">&#9668; Back</a><span class="by">Mineclowter<small>by Hazik</small></span></header>
+<main class="wrap"><h1 class="title"><img id="ic" width="48" height="48"><span id="tt"></span></h1><section class="card"><label>Text (use &amp; codes)</label><textarea id="t" rows="3">&6&lMineclowter &r&aby &nHazik</textarea><p id="p"></p><div id="b"></div><div class="res" id="o"></div><button onclick="copy($('#o').textContent)">Copy with &sect;</button></section></main>
+<script src="../assets/common.js"></script><script>
+const CL='0 #000,1 #0000aa,2 #00aa00,3 #00aaaa,4 #aa0000,5 #aa00aa,6 #ffaa00,7 #aaaaaa,8 #555555,9 #5555ff,a #55ff55,b #55ffff,c #ff5555,d #ff55ff,e #ffff55,f #ffffff'.split(',').map(x=>x.split(' '));
+$('#b').innerHTML=CL.map(c=>`<button style="background:${c[1]};color:${c[0]=='0'||c[0]=='1'?'#fff':'#000'};text-shadow:none" onclick="ins('&${c[0]}')">&${c[0]}</button>`).join('')+['l bold','o italic','n underline','m strike','k magic','r reset'].map(x=>`<button onclick="ins('&${x[0]}')">&${x[0]} ${x.slice(2)}</button>`).join('');
+function ins(c){const t=$('#t');t.value+=c;u()}
+function u(){const parts=$('#t').value.split(/[&§]([0-9a-fk-or])/);let col='#fff',st=[],h='';
+for(let i=0;i<parts.length;i++){if(i%2==0){h+=`<span style="color:${col};${st.includes('l')?'font-weight:bold;':''}${st.includes('o')?'font-style:italic;':''}text-decoration:${(st.includes('n')?'underline ':'')+(st.includes('m')?'line-through':'')};${st.includes('k')?'filter:blur(1px)':''}">${parts[i].replace(/</g,'&lt;')}</span>`}
+else{const c=parts[i];if(c=='r'){col='#fff';st=[]}else if(/[0-9a-f]/.test(c)){col=CL.find(x=>x[0]==c)[1];st=[]}else st.push(c)}}
+$('#p').innerHTML=h;$('#p').style.cssText='background:#222;padding:12px;border:3px solid #000;font-size:16px';$('#o').textContent=$('#t').value.replace(/&([0-9a-fk-or])/g,'§$1')}
+$('#t').oninput=u;u();</script></body></html>

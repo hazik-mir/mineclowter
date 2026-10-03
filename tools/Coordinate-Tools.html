@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Coordinate Tools - Mineclowter</title>
+<meta name="description" content="Minecraft coordinate tools: find chunk, region file and in-chunk position from X, Y, Z, and measure distance between two points.">
+<link rel="canonical" href="https://yourdomain.com/tools/Coordinate-Tools.html">
+<meta name="theme-color" content="#5da13a"><meta name="robots" content="index,follow"><meta name="author" content="Hazik">
+<meta property="og:site_name" content="Mineclowter"><meta property="og:type" content="website"><meta property="og:title" content="Coordinate Tools - Mineclowter"><meta property="og:description" content="Minecraft coordinate tools: find chunk, region file and in-chunk position from X, Y, Z, and measure distance between two points."><meta property="og:url" content="https://yourdomain.com/tools/Coordinate-Tools.html"><meta property="og:image" content="https://yourdomain.com/icons/main.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Coordinate Tools - Mineclowter"><meta name="twitter:description" content="Minecraft coordinate tools: find chunk, region file and in-chunk position from X, Y, Z, and measure distance between two points.">
+<link rel="icon" href="../icons/main.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"></head><body>
+<header class="top"><a class="btn" href="../index.html">&#9668; Back</a><span class="by">Mineclowter<small>by Hazik</small></span></header>
+<main class="wrap"><h1 class="title"><img id="ic" width="48" height="48"><span id="tt"></span></h1><section class="card"><h3>Chunk / region</h3><div class="row"><div><label>X</label><input id="x" type="number" value="123"></div><div><label>Y</label><input id="y" type="number" value="64"></div><div><label>Z</label><input id="z" type="number" value="-456"></div></div><div class="res" id="o"></div>
+<h3 style="margin-top:20px">Distance to second point</h3><div class="row"><div><label>X2</label><input id="x2" type="number" value="0"></div><div><label>Z2</label><input id="z2" type="number" value="0"></div></div><div class="res" id="o2"></div></section></main>
+<script src="../assets/common.js"></script><script>
+const f=Math.floor;
+function c(){const x=v('x'),z=v('z');out('o',`Chunk: <b>${f(x/16)}, ${f(z/16)}</b><br>Inside chunk: ${x&15}, ${v('y')}, ${z&15}<br>Chunk blocks: ${f(x/16)*16}..${f(x/16)*16+15}, ${f(z/16)*16}..${f(z/16)*16+15}<br>Region file: r.${f(x/512)}.${f(z/512)}.mca`);
+const dx=x-v('x2'),dz=z-v('z2');out('o2',`Straight: <b>${Math.hypot(dx,dz).toFixed(1)}</b> blocks<br>Manhattan: ${Math.abs(dx)+Math.abs(dz)}<br>Nether equivalent: ${(Math.hypot(dx,dz)/8).toFixed(1)}`)}
+$$('input').forEach(e=>e.oninput=c);c();</script></body></html>

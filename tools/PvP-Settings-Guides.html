@@ -1,0 +1,18 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PvP Settings Guides - Mineclowter</title>
+<meta name="description" content="Minecraft PvP settings guides for Java 1.8, Java 1.9+ and Bedrock: FOV, sensitivity, keybinds and video settings.">
+<link rel="canonical" href="https://yourdomain.com/tools/PvP-Settings-Guides.html">
+<meta name="theme-color" content="#5da13a"><meta name="robots" content="index,follow"><meta name="author" content="Hazik">
+<meta property="og:site_name" content="Mineclowter"><meta property="og:type" content="website"><meta property="og:title" content="PvP Settings Guides - Mineclowter"><meta property="og:description" content="Minecraft PvP settings guides for Java 1.8, Java 1.9+ and Bedrock: FOV, sensitivity, keybinds and video settings."><meta property="og:url" content="https://yourdomain.com/tools/PvP-Settings-Guides.html"><meta property="og:image" content="https://yourdomain.com/icons/main.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="PvP Settings Guides - Mineclowter"><meta name="twitter:description" content="Minecraft PvP settings guides for Java 1.8, Java 1.9+ and Bedrock: FOV, sensitivity, keybinds and video settings.">
+<link rel="icon" href="../icons/main.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"></head><body>
+<header class="top"><a class="btn" href="../index.html">&#9668; Back</a><span class="by">Mineclowter<small>by Hazik</small></span></header>
+<main class="wrap"><h1 class="title"><img id="ic" width="48" height="48"><span id="tt"></span></h1><section class="card"><div class="tabs" id="tb"></div><ul class="l" id="o"></ul></section></main>
+<script src="../assets/common.js"></script><script>
+const G={'Java 1.8':['FOV 70-90, sensitivity 30-60% (find your cm/360)','Render distance 8-12, particles Minimal','Use Lunar/Badlion-style FPS mods or OptiFine','Practice blockhitting, W-tap and strafing','Keybinds: hotbar on 1-4, pearl/gap on side keys','Turn off Bobbing, set Brightness to Bright (Moody)'],
+'Java 1.9+':['Time swings: wait for full attack cooldown, use sweeping/shields','Axe to disable shields, crits by hitting while falling','Learn sprint-reset and shield timing','Use a high-refresh monitor and cap FPS above refresh','Raise Simulation distance only when needed'],
+'Bedrock':['Touch: enable Split Controls + Joystick, lower sensitivity','Controller: aim assist helps, tune deadzone to 0.1-0.15','Turn on Fancy Graphics off, render 6-10 for stable FPS','Use Java-style Hit Particles packs only if allowed','Keep 60+ FPS stable for consistent hit registration']};
+$('#tb').innerHTML=Object.keys(G).map(k=>`<button onclick="s('${k}')" id="b_${k.replace(/\W/g,'')}">${k}</button>`).join('');
+function s(k){$$('.tabs button').forEach(b=>b.classList.remove('on'));$('#b_'+k.replace(/\W/g,'')).classList.add('on');$('#o').innerHTML=G[k].map(x=>'<li>'+x+'</li>').join('')}
+s('Java 1.8');</script></body></html>

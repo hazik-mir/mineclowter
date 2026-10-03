@@ -1,0 +1,16 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FOV Calculator - Mineclowter</title>
+<meta name="description" content="Minecraft FOV calculator: convert vertical FOV to horizontal FOV for any screen resolution and aspect ratio.">
+<link rel="canonical" href="https://yourdomain.com/tools/FOV-Calculator.html">
+<meta name="theme-color" content="#5da13a"><meta name="robots" content="index,follow"><meta name="author" content="Hazik">
+<meta property="og:site_name" content="Mineclowter"><meta property="og:type" content="website"><meta property="og:title" content="FOV Calculator - Mineclowter"><meta property="og:description" content="Minecraft FOV calculator: convert vertical FOV to horizontal FOV for any screen resolution and aspect ratio."><meta property="og:url" content="https://yourdomain.com/tools/FOV-Calculator.html"><meta property="og:image" content="https://yourdomain.com/icons/main.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="FOV Calculator - Mineclowter"><meta name="twitter:description" content="Minecraft FOV calculator: convert vertical FOV to horizontal FOV for any screen resolution and aspect ratio.">
+<link rel="icon" href="../icons/main.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"></head><body>
+<header class="top"><a class="btn" href="../index.html">&#9668; Back</a><span class="by">Mineclowter<small>by Hazik</small></span></header>
+<main class="wrap"><h1 class="title"><img id="ic" width="48" height="48"><span id="tt"></span></h1><section class="card"><div class="row"><div><label>Minecraft FOV (vertical)</label><input id="f" type="number" value="70"></div><div><label>Screen width</label><input id="w" type="number" value="1920"></div><div><label>Screen height</label><input id="h" type="number" value="1080"></div></div><div class="res" id="o"></div><label>Horizontal FOV &rarr; Minecraft FOV</label><input id="hf" type="number" value="103"><div class="res" id="o2"></div></section></main>
+<script src="../assets/common.js"></script><script>
+const R=Math.PI/180;
+function c(){const a=v('w')/v('h');out('o',`Horizontal FOV: <b>${(2*Math.atan(Math.tan(v('f')*R/2)*a)/R).toFixed(1)}&deg;</b>`);
+out('o2',`Minecraft FOV: <b>${(2*Math.atan(Math.tan(v('hf')*R/2)/a)/R).toFixed(1)}&deg;</b>`)}
+$$('input').forEach(e=>e.oninput=c);c();</script></body></html>

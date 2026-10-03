@@ -1,0 +1,16 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FPS Performance Guide - Mineclowter</title>
+<meta name="description" content="Boost Minecraft FPS with settings and mod tips for low-end, mid-range and high-end PCs, including Sodium, render distance and RAM advice.">
+<link rel="canonical" href="https://yourdomain.com/tools/FPS-Performance-Guide.html">
+<meta name="theme-color" content="#5da13a"><meta name="robots" content="index,follow"><meta name="author" content="Hazik">
+<meta property="og:site_name" content="Mineclowter"><meta property="og:type" content="website"><meta property="og:title" content="FPS Performance Guide - Mineclowter"><meta property="og:description" content="Boost Minecraft FPS with settings and mod tips for low-end, mid-range and high-end PCs, including Sodium, render distance and RAM advice."><meta property="og:url" content="https://yourdomain.com/tools/FPS-Performance-Guide.html"><meta property="og:image" content="https://yourdomain.com/icons/main.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="FPS Performance Guide - Mineclowter"><meta name="twitter:description" content="Boost Minecraft FPS with settings and mod tips for low-end, mid-range and high-end PCs, including Sodium, render distance and RAM advice.">
+<link rel="icon" href="../icons/main.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"></head><body>
+<header class="top"><a class="btn" href="../index.html">&#9668; Back</a><span class="by">Mineclowter<small>by Hazik</small></span></header>
+<main class="wrap"><h1 class="title"><img id="ic" width="48" height="48"><span id="tt"></span></h1><section class="card"><label>Your PC</label><select id="t" onchange="r()"><option>Potato<option>Mid-range<option>High-end</select><ul class="l" id="o"></ul></section></main>
+<script src="../assets/common.js"></script><script>
+const T={Potato:['Install Fabric + Sodium, Lithium, FerriteCore, EntityCulling','Render distance 6-8, simulation distance 5','Graphics Fast, Smooth Lighting off, Clouds off','Particles Minimal, Entity Shadows off','Allocate 2-3 GB RAM only (more can cause lag spikes)','Close Chrome/Discord overlays while playing'],
+'Mid-range':['Use Sodium + Iris only if you want shaders','Render distance 10-12, simulation 8','Biome Blend 3x3, Mipmap 2','Allocate 4 GB RAM','Use VSync off and cap FPS to your monitor refresh rate'],
+'High-end':['Render distance 16-24 with Sodium/Distant Horizons','Allocate 6-8 GB, use Java 21 with G1GC or ZGC','Use shaders (Iris) with 1.5x-2x view tweaks','Uncap FPS or cap at refresh rate for lower heat']};
+function r(){$('#o').innerHTML=T[$('#t').value].map(x=>'<li>'+x+'</li>').join('')}r();</script></body></html>

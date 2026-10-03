@@ -1,0 +1,18 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mob Health Damage Calculator - Mineclowter</title>
+<meta name="description" content="Minecraft mob health and damage calculator: hits to kill any mob with swords, axes, Sharpness and critical hits.">
+<link rel="canonical" href="https://yourdomain.com/tools/Mob-Health-Damage-Calculator.html">
+<meta name="theme-color" content="#5da13a"><meta name="robots" content="index,follow"><meta name="author" content="Hazik">
+<meta property="og:site_name" content="Mineclowter"><meta property="og:type" content="website"><meta property="og:title" content="Mob Health Damage Calculator - Mineclowter"><meta property="og:description" content="Minecraft mob health and damage calculator: hits to kill any mob with swords, axes, Sharpness and critical hits."><meta property="og:url" content="https://yourdomain.com/tools/Mob-Health-Damage-Calculator.html"><meta property="og:image" content="https://yourdomain.com/icons/main.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Mob Health Damage Calculator - Mineclowter"><meta name="twitter:description" content="Minecraft mob health and damage calculator: hits to kill any mob with swords, axes, Sharpness and critical hits.">
+<link rel="icon" href="../icons/main.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"></head><body>
+<header class="top"><a class="btn" href="../index.html">&#9668; Back</a><span class="by">Mineclowter<small>by Hazik</small></span></header>
+<main class="wrap"><h1 class="title"><img id="ic" width="48" height="48"><span id="tt"></span></h1><section class="card"><div class="row"><div><label>Mob</label><select id="m"></select></div><div><label>Weapon</label><select id="w"></select></div><div><label>Sharpness</label><input id="s" type="number" value="0" min="0" max="5"></div></div><label><input type="checkbox" id="c" style="width:auto"> Critical hits (falling)</label><div class="res" id="o"></div></section></main>
+<script src="../assets/common.js"></script><script>
+const M={Zombie:20,Creeper:20,Skeleton:20,Spider:16,Enderman:40,Blaze:20,Ghast:10,Witch:26,Piglin:16,Hoglin:40,'Iron Golem':100,Ravager:100,Warden:500,'Ender Dragon':200,Wither:300,Player:20};
+const W={Fist:1,'Wood Sword':4,'Stone Sword':5,'Iron Sword':6,'Diamond Sword':7,'Netherite Sword':8,'Iron Axe':9,'Diamond Axe':9,'Netherite Axe':10,Trident:9};
+$('#m').innerHTML=Object.keys(M).map(k=>'<option>'+k).join('');$('#w').innerHTML=Object.keys(W).map(k=>'<option>'+k).join('');
+function c(){let d=W[$('#w').value]+(v('s')>0?.5*v('s')+.5:0);if($('#c').checked)d*=1.5;const h=M[$('#m').value];
+out('o',`Mob health: ${h} (${h/2} hearts)<br>Damage per hit: <b>${d}</b><br>Hits to kill: <b>${Math.ceil(h/d)}</b><br><small>Ignores armor and attack cooldown</small>`)}
+$$('input,select').forEach(e=>e.oninput=c);c();</script></body></html>

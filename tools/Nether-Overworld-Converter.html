@@ -1,0 +1,14 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nether Overworld Converter - Mineclowter</title>
+<meta name="description" content="Convert Minecraft Overworld coordinates to Nether coordinates and back (8:1 ratio) for perfect portal linking.">
+<link rel="canonical" href="https://yourdomain.com/tools/Nether-Overworld-Converter.html">
+<meta name="theme-color" content="#5da13a"><meta name="robots" content="index,follow"><meta name="author" content="Hazik">
+<meta property="og:site_name" content="Mineclowter"><meta property="og:type" content="website"><meta property="og:title" content="Nether Overworld Converter - Mineclowter"><meta property="og:description" content="Convert Minecraft Overworld coordinates to Nether coordinates and back (8:1 ratio) for perfect portal linking."><meta property="og:url" content="https://yourdomain.com/tools/Nether-Overworld-Converter.html"><meta property="og:image" content="https://yourdomain.com/icons/main.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Nether Overworld Converter - Mineclowter"><meta name="twitter:description" content="Convert Minecraft Overworld coordinates to Nether coordinates and back (8:1 ratio) for perfect portal linking.">
+<link rel="icon" href="../icons/main.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"></head><body>
+<header class="top"><a class="btn" href="../index.html">&#9668; Back</a><span class="by">Mineclowter<small>by Hazik</small></span></header>
+<main class="wrap"><h1 class="title"><img id="ic" width="48" height="48"><span id="tt"></span></h1><section class="card"><h3>Overworld &rarr; Nether</h3><div class="row"><div><label>X</label><input id="ox" type="number" value="800"></div><div><label>Z</label><input id="oz" type="number" value="-1600"></div></div><div class="res" id="o1"></div><h3 style="margin-top:20px">Nether &rarr; Overworld</h3><div class="row"><div><label>X</label><input id="nx" type="number" value="100"></div><div><label>Z</label><input id="nz" type="number" value="-200"></div></div><div class="res" id="o2"></div></section></main>
+<script src="../assets/common.js"></script><script>
+function c(){out('o1',`Nether: <b>${Math.floor(v('ox')/8)}, ${Math.floor(v('oz')/8)}</b>`);out('o2',`Overworld: <b>${v('nx')*8}, ${v('nz')*8}</b>`)}
+$$('input').forEach(e=>e.oninput=c);c();</script></body></html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Addon Compatibility Checker - Mineclowter</title>
+<meta name="description" content="Check Minecraft Bedrock add-on manifest.json files for valid UUIDs, modules and min_engine_version compatibility.">
+<link rel="canonical" href="https://yourdomain.com/tools/Addon-Compatibility-Checker.html">
+<meta name="theme-color" content="#5da13a"><meta name="robots" content="index,follow"><meta name="author" content="Hazik">
+<meta property="og:site_name" content="Mineclowter"><meta property="og:type" content="website"><meta property="og:title" content="Addon Compatibility Checker - Mineclowter"><meta property="og:description" content="Check Minecraft Bedrock add-on manifest.json files for valid UUIDs, modules and min_engine_version compatibility."><meta property="og:url" content="https://yourdomain.com/tools/Addon-Compatibility-Checker.html"><meta property="og:image" content="https://yourdomain.com/icons/main.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Addon Compatibility Checker - Mineclowter"><meta name="twitter:description" content="Check Minecraft Bedrock add-on manifest.json files for valid UUIDs, modules and min_engine_version compatibility.">
+<link rel="icon" href="../icons/main.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"></head><body>
+<header class="top"><a class="btn" href="../index.html">&#9668; Back</a><span class="by">Mineclowter<small>by Hazik</small></span></header>
+<main class="wrap"><h1 class="title"><img id="ic" width="48" height="48"><span id="tt"></span></h1><section class="card"><p>Bedrock add-on manifest.json check.</p><label>Game version</label><input id="g" value="1.21.0"><label>Paste manifest.json</label><textarea id="m" rows="10">{"format_version":2,"header":{"name":"Test","uuid":"11111111-2222-4333-8444-555555555555","version":[1,0,0],"min_engine_version":[1,20,0]},"modules":[{"type":"data","uuid":"22222222-3333-4444-8555-666666666666","version":[1,0,0]}]}</textarea><button onclick="c()" style="margin-top:10px">Check</button><div class="res" id="o"></div></section></main>
+<script src="../assets/common.js"></script><script>
+const U=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+function c(){const L=[],ok=(b,t)=>L.push((b?'&#10004; ':'&#10006; ')+t);let j;
+try{j=JSON.parse($('#m').value);ok(1,'Valid JSON')}catch(e){return out('o','&#10006; Invalid JSON: '+e.message)}
+ok(j.format_version===2||j.format_version===1,'format_version is 1 or 2 (use 2)');const h=j.header||{};
+ok(U.test(h.uuid||''),'Header UUID valid');ok(Array.isArray(h.version)&&h.version.length==3,'Header version is [x,y,z]');
+const gv=$('#g').value.split('.').map(Number),me=h.min_engine_version;
+if(Array.isArray(me)){let ok2=true;for(let i=0;i<3;i++){if((me[i]||0)<(gv[i]||0))break;if((me[i]||0)>(gv[i]||0)){ok2=false;break}}ok(ok2,`min_engine_version ${me.join('.')} ${ok2?'works on':'is newer than'} ${$('#g').value}`)}else ok(0,'min_engine_version missing');
+const M=j.modules||[];ok(M.length>0,'Has modules');M.forEach(m=>{ok(['data','resources','script','client_data','interface','world_template'].includes(m.type),'Module type: '+m.type);ok(U.test(m.uuid||''),'Module UUID valid');ok(m.uuid!==h.uuid,'Module UUID differs from header')});
+if(M.some(m=>m.type=='script'))ok((j.dependencies||[]).some(d=>d.module_name),'Script module needs @minecraft/server dependency');
+out('o',L.join('<br>'))}c();</script></body></html>

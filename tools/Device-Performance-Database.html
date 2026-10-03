@@ -1,0 +1,15 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Device Performance Database - Mineclowter</title>
+<meta name="description" content="Estimated Minecraft FPS on common PCs, Macs, consoles and phones, vanilla versus optimized.">
+<link rel="canonical" href="https://yourdomain.com/tools/Device-Performance-Database.html">
+<meta name="theme-color" content="#5da13a"><meta name="robots" content="index,follow"><meta name="author" content="Hazik">
+<meta property="og:site_name" content="Mineclowter"><meta property="og:type" content="website"><meta property="og:title" content="Device Performance Database - Mineclowter"><meta property="og:description" content="Estimated Minecraft FPS on common PCs, Macs, consoles and phones, vanilla versus optimized."><meta property="og:url" content="https://yourdomain.com/tools/Device-Performance-Database.html"><meta property="og:image" content="https://yourdomain.com/icons/main.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Device Performance Database - Mineclowter"><meta name="twitter:description" content="Estimated Minecraft FPS on common PCs, Macs, consoles and phones, vanilla versus optimized.">
+<link rel="icon" href="../icons/main.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"></head><body>
+<header class="top"><a class="btn" href="../index.html">&#9668; Back</a><span class="by">Mineclowter<small>by Hazik</small></span></header>
+<main class="wrap"><h1 class="title"><img id="ic" width="48" height="48"><span id="tt"></span></h1><section class="card"><label>Platform</label><select id="p"><option>All<option>PC<option>Mac<option>Console<option>Mobile</select><table style="margin-top:12px"><thead><tr><th>Device<th>Platform<th>Vanilla FPS<th>Optimized FPS</thead><tbody id="t"></tbody></table><p>Rough community-style estimates at ~12 chunks (optimized = Sodium/Bedrock tweaks). Edit the D array to add real data.</p></section></main>
+<script src="../assets/common.js"></script><script>
+const D=[['Intel UHD 620 laptop','PC',50,110],['Ryzen 5 + Vega iGPU','PC',90,190],['GTX 1650 desktop','PC',250,500],['RTX 3060 desktop','PC',350,700],['RTX 4070 desktop','PC',500,1000],['MacBook Air M1','Mac',150,300],['Steam Deck','PC',90,160],['Chromebook (low-end)','PC',25,45],['Nintendo Switch (Bedrock)','Console',30,30],['PS5 / Xbox Series X (Bedrock)','Console',60,60],['iPhone 13 (Bedrock)','Mobile',60,60],['Mid Android (Bedrock)','Mobile',45,60],['Budget Android (Bedrock)','Mobile',25,30]];
+function c(){const p=$('#p').value;$('#t').innerHTML=D.filter(d=>p=='All'||d[1]==p).map(d=>`<tr><td>${d[0]}<td>${d[1]}<td>${d[2]}<td>${d[3]}`).join('')}
+$('#p').onchange=c;c();</script></body></html>

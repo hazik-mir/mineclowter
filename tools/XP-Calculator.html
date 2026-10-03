@@ -1,0 +1,16 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>XP Calculator - Mineclowter</title>
+<meta name="description" content="Minecraft XP calculator: XP points needed between any two levels, XP per level and Bottles o Enchanting needed.">
+<link rel="canonical" href="https://yourdomain.com/tools/XP-Calculator.html">
+<meta name="theme-color" content="#5da13a"><meta name="robots" content="index,follow"><meta name="author" content="Hazik">
+<meta property="og:site_name" content="Mineclowter"><meta property="og:type" content="website"><meta property="og:title" content="XP Calculator - Mineclowter"><meta property="og:description" content="Minecraft XP calculator: XP points needed between any two levels, XP per level and Bottles o Enchanting needed."><meta property="og:url" content="https://yourdomain.com/tools/XP-Calculator.html"><meta property="og:image" content="https://yourdomain.com/icons/main.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="XP Calculator - Mineclowter"><meta name="twitter:description" content="Minecraft XP calculator: XP points needed between any two levels, XP per level and Bottles o Enchanting needed.">
+<link rel="icon" href="../icons/main.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"></head><body>
+<header class="top"><a class="btn" href="../index.html">&#9668; Back</a><span class="by">Mineclowter<small>by Hazik</small></span></header>
+<main class="wrap"><h1 class="title"><img id="ic" width="48" height="48"><span id="tt"></span></h1><section class="card"><div class="row"><div><label>Current level</label><input id="a" type="number" value="0"></div><div><label>Target level</label><input id="b" type="number" value="30"></div></div><div class="res" id="o"></div></section></main>
+<script src="../assets/common.js"></script><script>
+const tot=L=>L<=16?L*L+6*L:L<=31?2.5*L*L-40.5*L+360:4.5*L*L-162.5*L+2220;
+const per=L=>L<=15?2*L+7:L<=30?5*L-38:9*L-158;
+function c(){const a=v('a'),b=v('b');out('o',`XP points needed: <b>${Math.round(tot(b)-tot(a))}</b><br>Total XP at level ${a}: ${Math.round(tot(a))}<br>Total XP at level ${b}: ${Math.round(tot(b))}<br>XP to go ${b}&rarr;${b+1}: ${per(b)}<br>Bottles o' Enchanting (avg 7 XP): ~${Math.ceil(Math.max(0,tot(b)-tot(a))/7)}`)}
+$$('input').forEach(e=>e.oninput=c);c();</script></body></html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Seed Tools - Mineclowter</title>
+<meta name="description" content="Minecraft seed tools with an interactive seed map and accurate Java slime chunk finder. Explore any seed in your browser.">
+<link rel="canonical" href="https://yourdomain.com/tools/Seed-Tools.html">
+<meta name="theme-color" content="#5da13a"><meta name="robots" content="index,follow"><meta name="author" content="Hazik">
+<meta property="og:site_name" content="Mineclowter"><meta property="og:type" content="website"><meta property="og:title" content="Seed Tools - Mineclowter"><meta property="og:description" content="Minecraft seed tools with an interactive seed map and accurate Java slime chunk finder. Explore any seed in your browser."><meta property="og:url" content="https://yourdomain.com/tools/Seed-Tools.html"><meta property="og:image" content="https://yourdomain.com/icons/main.png">
+<meta name="twitter:card" content="summary"><meta name="twitter:title" content="Seed Tools - Mineclowter"><meta name="twitter:description" content="Minecraft seed tools with an interactive seed map and accurate Java slime chunk finder. Explore any seed in your browser.">
+<link rel="icon" href="../icons/main.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"></head><body>
+<header class="top"><a class="btn" href="../index.html">&#9668; Back</a><span class="by">Mineclowter<small>by Hazik</small></span></header>
+<main class="wrap"><h1 class="title"><img id="ic" width="48" height="48"><span id="tt"></span></h1><section class="card"><div class="row"><div><label>Seed (number or text)</label><input id="s" value="Mineclowter"></div><div><label>Blocks per pixel</label><select id="z"><option>16<option>8<option selected>4<option>2</select></div><div><label>Center X / Z</label><div class="row"><input id="cx" type="number" value="0"><input id="cz" type="number" value="0"></div></div></div>
+<p><button onclick="rs()">Random seed</button> <button onclick="mv(-1,0)">&larr;</button><button onclick="mv(0,-1)">&uarr;</button><button onclick="mv(0,1)">&darr;</button><button onclick="mv(1,0)">&rarr;</button> <label style="display:inline"><input type="checkbox" id="sl" checked style="width:auto"> Slime chunks</label></p>
+<canvas id="cv" width="256" height="256"></canvas><div class="res" id="o"></div><p>Biome art is an <b>approximation</b> generated from your seed (not real worldgen). Slime chunks use the real Java Edition algorithm. Seed numeric value: <code id="sv"></code></p></section></main>
+<script src="../assets/common.js"></script><script>
+let SD=0n,SN=0;
+function hs(s){s=s.trim();if(/^-?\d+$/.test(s))return BigInt.asIntN(64,BigInt(s));let h=0;for(const c of s)h=(Math.imul(31,h)+c.charCodeAt(0))|0;return BigInt(h)}
+function slime(x,z){const m=(1n<<48n)-1n;let t=SD+BigInt(Math.imul(Math.imul(x,x),0x4c1906))+BigInt(Math.imul(x,0x5ac0db))+BigInt(Math.imul(z,z))*0x4307a7n+BigInt(Math.imul(z,0x5f24f));
+let s=(BigInt.asIntN(64,t)^0x3ad8025fn^0x5DEECE66Dn)&m;for(;;){s=(s*0x5DEECE66Dn+0xBn)&m;const b=Number(s>>17n),r=b%10;if(b-r+9<=2147483647)return r==0}}
+function rnd(x,y,k){let h=Math.imul(x,374761393)^Math.imul(y,668265263)^Math.imul(k+1,1274126177)^SN;h=Math.imul(h^(h>>>13),1274126177);return((h^(h>>>16))>>>0)/4294967295}
+function n(x,y,k){const xi=Math.floor(x),yi=Math.floor(y),fx=x-xi,fy=y-yi,u=fx*fx*(3-2*fx),w=fy*fy*(3-2*fy),a=rnd(xi,yi,k),b=rnd(xi+1,yi,k),c=rnd(xi,yi+1,k),d=rnd(xi+1,yi+1,k);return a+(b-a)*u+(c-a)*w+(a-b-c+d)*u*w}
+const oct=(x,y,k)=>(n(x/900,y/900,k)*.6+n(x/300,y/300,k)*.3+n(x/90,y/90,k)*.1);
+function biome(x,z){const e=oct(x,z,1),t=oct(x+9999,z,2),m=oct(x,z+9999,3);
+if(e<.3)return[20,50,140];if(e<.4)return[40,90,200];if(e<.43)return[230,215,150];if(e>.72)return[e>.8?[245,245,245]:[130,130,130]].flat();
+if(t<.35)return[225,235,245];if(t>.62)return m<.5?[225,190,110]:[100,160,40];return m>.55?[30,100,40]:[110,170,60]}
+const cv=$('#cv'),g=cv.getContext('2d');
+function draw(){SD=hs($('#s').value);SN=Number(BigInt.asIntN(32,SD));$('#sv').textContent=SD;const z=+$('#z').value,cx=v('cx'),cz=v('cz'),im=g.createImageData(256,256);
+for(let py=0;py<256;py++)for(let px=0;px<256;px++){const c=biome(cx+(px-128)*z,cz+(py-128)*z),i=(py*256+px)*4;im.data.set([...c,255],i)}
+g.putImageData(im,0,0);
+if($('#sl').checked){g.fillStyle='rgba(120,255,120,.55)';const s=16/z,x0=Math.floor((cx-128*z)/16),z0=Math.floor((cz-128*z)/16);
+for(let a=0;a<=256/s+1;a++)for(let b=0;b<=256/s+1;b++){const X=x0+a,Z=z0+b;if(slime(X,Z))g.fillRect((X*16-cx)/z+128,(Z*16-cz)/z+128,s,s)}}
+g.fillStyle='red';g.fillRect((0-cx)/z+126,(0-cz)/z+126,4,4)}
+function rs(){$('#s').value=Math.floor(Math.random()*2**31)*(Math.random()<.5?-1:1);draw()}
+function mv(a,b){$('#cx').value=v('cx')+a*128*$('#z').value;$('#cz').value=v('cz')+b*128*$('#z').value;draw()}
+cv.onmousemove=e=>{const r=cv.getBoundingClientRect(),z=+$('#z').value,x=Math.round(v('cx')+((e.clientX-r.left)/r.width*256-128)*z),y=Math.round(v('cz')+((e.clientY-r.top)/r.height*256-128)*z);
+out('o',`X ${x}, Z ${y} - chunk ${Math.floor(x/16)}, ${Math.floor(y/16)} - slime chunk: ${slime(Math.floor(x/16),Math.floor(y/16))?'<b>YES</b>':'no'}`)};
+$$('input,select').forEach(e=>e.onchange=draw);draw();</script></body></html>
