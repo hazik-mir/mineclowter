@@ -1,2 +1,2 @@
-Put icons here named like the tool file in lowercase: XP-Calculator.html -> xp-calculator.png
-main.png is the default for tools without an icon (replace it with your own).
+Replace any icon with your own: lowercase .png named after the tool file (Seed-Map.html -> seed-map.png).
+main.png is the site icon. Ready-made icons are built into every page, so tools always show one.
